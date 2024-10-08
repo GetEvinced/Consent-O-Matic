@@ -55,11 +55,13 @@ async function contentScriptRunner() {
                                             result.cmp = evt.cmpName;
                                             result.clicks = evt.clicks;
                                             result.url = url;
-        
+                                            console.log(`CONSENT-O-MATIC: successfully handled CMP ${JSON.stringify(result)}`)
                                             chrome.runtime.sendMessage("HandledCMP|"+JSON.stringify(result));
                                         } else if(evt.error) {
+                                            console.log(`CONSENT-O-MATIC: CMPError`)
                                             chrome.runtime.sendMessage("CMPError");
                                         } else {
+                                            console.log(`CONSENT-O-MATIC: NothingFound`)
                                             chrome.runtime.sendMessage("NothingFound");
                                         }
                                     });
