@@ -51,19 +51,30 @@ async function contentScriptRunner() {
                                             "handled": evt.handled
                                         };
     
+                                        let event = new CustomEvent('myCustomEvent', {
+                                            detail: {
+                                                time: new Date(),
+                                            }
+                                        });
                                         if(evt.handled) {
                                             result.cmp = evt.cmpName;
                                             result.clicks = evt.clicks;
                                             result.url = url;
                                             console.log(`CONSENT-O-MATIC: successfully handled CMP ${JSON.stringify(result)}`)
+                                            event.detail['message'] = 'success'
+
+
                                             chrome.runtime.sendMessage("HandledCMP|"+JSON.stringify(result));
                                         } else if(evt.error) {
+                                            event.detail['message'] = 'error'
                                             console.log(`CONSENT-O-MATIC: CMPError`)
                                             chrome.runtime.sendMessage("CMPError");
                                         } else {
+                                            event.detail['message'] = 'nothing found'
                                             console.log(`CONSENT-O-MATIC: NothingFound`)
                                             chrome.runtime.sendMessage("NothingFound");
                                         }
+                                        document.dispatchEvent(event);
                                     });
             
                                     ConsentEngine.singleton = engine;
