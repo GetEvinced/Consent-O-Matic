@@ -1,13 +1,13 @@
 {
     "$schema": "https://raw.githubusercontent.com/cavi-au/Consent-O-Matic/master/rules.schema.json",
-    "Sainsburys": {
+    "habitat": {
         "detectors": [
             {
                 "presentMatcher": [
                     {
                         "type": "css",
                         "target": {
-                            "selector": ".consent_prompt_button.consent_prompt_button_accept",
+                            "selector": "#consent_prompt_submit",
                             "displayFilter": true
                         }
                     }
@@ -38,7 +38,7 @@
                         {
                             "type": "click",
                             "target": {
-                                "selector": ".consent_prompt_button.consent_prompt_button_accept"
+                                "selector": "#consent_prompt_submit"
                             }
                         },
                         {
@@ -51,7 +51,7 @@
                             "falseAction": {
                                 "type": "click",
                                 "target": {
-                                    "selector": ".consent_prompt_button.consent_prompt_button_accept"
+                                    "selector": "#consent_prompt_submit"
                                 }
                             }
                         }
