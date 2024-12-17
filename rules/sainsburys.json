@@ -7,14 +7,6 @@
                     {
                         "type": "css",
                         "target": {
-                            "selector": ".consent_prompt_button.consent_prompt_button_accept"
-                        }
-                    }
-                ],
-                "showingMatcher": [
-                    {
-                        "type": "css",
-                        "target": {
                             "selector": ".consent_prompt_button.consent_prompt_button_accept",
                             "displayFilter": true
                         }
@@ -24,12 +16,6 @@
         ],
         "methods": [
             {
-                "action": {
-                    "type": "hide",
-                    "target": {
-                        "selector": ".consent_prompt_button.consent_prompt_button_accept"
-                    }
-                },
                 "name": "HIDE_CMP"
             },
             {
@@ -42,6 +28,35 @@
                 "name": "SAVE_CONSENT"
             },
             {
+                "action": {
+                    "type": "list",
+                    "actions": [
+                        {
+                            "type": "wait",
+                            "waitTime": 250
+                        },
+                        {
+                            "type": "click",
+                            "target": {
+                                "selector": ".consent_prompt_button.consent_prompt_button_accept"
+                            }
+                        },
+                        {
+                            "type": "ifcss",
+                            "target": {
+                                "selector": ".sp_choice_type_SAVE_AND_EXIT",
+                                "iframeFilter": true,
+                                "displayFilter": true
+                            },
+                            "falseAction": {
+                                "type": "click",
+                                "target": {
+                                    "selector": ".consent_prompt_button.consent_prompt_button_accept"
+                                }
+                            }
+                        }
+                    ]
+                },
                 "name": "UTILITY"
             }
         ]
