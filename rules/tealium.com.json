@@ -36,12 +36,39 @@
                         }
                     },
                     "falseAction": {
-                        "type": "click",
+                        "type": "ifcss",
                         "target": {
                             "selector": "#explicit-consent-prompt-manage",
                             "textFilter": [
                                 "Let me choose"
                             ]
+                        },
+                        "trueAction": {
+                            "type": "click",
+                            "target": {
+                                "selector": "#explicit-consent-prompt-manage",
+                                "textFilter": [
+                                    "Let me choose"
+                                ]
+                            }
+                        },
+                        "falseAction": {
+                            "type": "ifcss",
+                            "target": {
+                                "selector": ".consent_prompt_button.consent_prompt_button_preferences",
+                                "textFilter": [
+                                    "Manage Preferences"
+                                ]
+                            },
+                            "trueAction": {
+                                "type": "click",
+                                "target": {
+                                    "selector": ".consent_prompt_button.consent_prompt_button_preferences",
+                                    "textFilter": [
+                                        "Manage Preferences"
+                                    ]
+                                }
+                            }
                         }
                     }
                 },
@@ -254,14 +281,14 @@
                                         "target": {
                                             "textFilter": [
                                                 "Allow functional cookies?",
-                                                "These cookies allow us to provide enhanced functionality and personalise content for you. For example they're used to recognise you when you return to our website"
+                                                "These cookies allow us to provide enhanced functionality and personalise content for you."
                                             ]
                                         }
                                     },
                                     "toggleAction": {
                                         "type": "click",
                                         "target": {
-                                            "selector": "#consent-preferences-dialog-toggle-functional"
+                                            "selector": "#consent-preferences-dialog-toggle-functional,#toggle_cat6"
                                         }
                                     },
                                     "trueAction": {
@@ -331,7 +358,7 @@
                                     "toggleAction": {
                                         "type": "click",
                                         "target": {
-                                            "selector": "#consent-preferences-dialog-toggle-marketing"
+                                            "selector": "#consent-preferences-dialog-toggle-marketing,#toggle_cat3"
                                         }
                                     },
                                     "trueAction": {
@@ -356,9 +383,27 @@
             },
             {
                 "action": {
-                    "type": "click",
+                    "type": "ifcss",
                     "target": {
-                        "selector": "#__tealiumGDPRcpPrefs #preferences_prompt_submit, #preferences_prompt_settings_submit, #__tealiumGDPRcpPrefs .t_cm_save_button, #consentAcceptChoice,#preferences_prompt_submit_pref,#consent-preferences-dialog-save"
+                        "selector": ".privacy_prompt_button",
+                        "textFilter": [
+                            "Save Settings"
+                        ]
+                    },
+                    "trueAction": {
+                        "type": "click",
+                        "target": {
+                            "selector": ".privacy_prompt_button",
+                            "textFilter": [
+                                "Save Settings"
+                            ]
+                        }
+                    },
+                    "falseAction": {
+                        "type": "click",
+                        "target": {
+                            "selector": "#__tealiumGDPRcpPrefs #preferences_prompt_submit, #preferences_prompt_settings_submit, #__tealiumGDPRcpPrefs .t_cm_save_button, #consentAcceptChoice,#preferences_prompt_submit_pref,#consent-preferences-dialog-save"
+                        }
                     }
                 },
                 "name": "SAVE_CONSENT"
