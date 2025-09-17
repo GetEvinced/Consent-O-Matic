@@ -12,24 +12,6 @@
         }
       },
       {
-        "name": "OPEN_OPTIONS",
-        "action": {
-          "type": "click",
-          "target": {
-            "selector": "#ccmgt_explicit_accept"
-          }
-        }
-      },
-      {
-        "name": "DO_CONSENT",
-        "action": {
-          "type": "click",
-          "target": {
-            "selector": "#ccmgt_explicit_accept"
-          }
-        }
-      },
-      {
         "name": "SAVE_CONSENT",
         "action": {
           "type": "click",
